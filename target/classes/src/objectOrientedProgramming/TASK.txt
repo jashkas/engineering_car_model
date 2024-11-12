@@ -1,0 +1,4 @@
+Инкапсуляция - Encapsulation
+Наследование - Inheritance
+Полиморфизм - Polymorphism
+Инверсия зависимостей - DependencyInversion

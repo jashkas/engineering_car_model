@@ -15,6 +15,13 @@ import java.util.stream.Collectors;
 public class CarModelReader {
 
     public static void loadFromFile(String fileName, List<CarModelDTO> carModels) {
+        // Если путь не задан, то используется путь по умолчанию
+        if (fileName == null
+                || fileName.trim().isEmpty()
+                || fileName.trim().equals("default")) {
+            fileName = "CarModel/src/ru/esstu/lab1/027_DST_CAR_MODEL.csv";
+        }
+
         String line;
         String delimiter = ";";  // разделитель
 

@@ -16,19 +16,15 @@ public class CarModelService implements FileManagerCarModelService{
         load("default"); // загружаем данные из файла
     }
 
+    public CarModelService(String filePath) {
+        carModels = new ArrayList<>(); // создаем список
+        load(filePath); // загружаем данные из файла
+    }
+
     @Override
-    public void load(String fileName) {
-        // Если путь не задан, то используется путь по умолчанию
-        if (fileName == null
-                || fileName.trim().isEmpty()
-                || fileName.trim().equals("default")) {
-            //String relativeFilepath = "J:\\Bachelor\\3_course\\fundamentals_of_software_engineering\\CarModel\\out\\production\\CarModel\\027_DST_CAR_MODEL.csv";
-            String relativeFilepath = ".\\out\\production\\CarModel\\027_DST_CAR_MODEL.csv";
-            // используем утилитный метод для загрузки моделей автомобилей
-            CarModelReader.loadFromFile(relativeFilepath, carModels);
-        } else {
-            CarModelReader.loadFromFile(fileName, carModels);
-        }
+    public void load(String filePath) {
+        // используем утилитный метод для загрузки моделей автомобилей
+        CarModelReader.loadFromFile(filePath, carModels);
     }
 
     @Override

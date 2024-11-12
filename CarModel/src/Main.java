@@ -15,10 +15,11 @@ public class Main {
         List<CarModelDTO> cars = reader.getAllCarModels();
         cars.forEach(System.out::println);
 
-        Optional<CarModelDTO> car = reader.findCarById(817);
-        System.out.print("\nПоиск по id: 817: ");
-        car.ifPresent(System.out::print);
+        Optional<CarModelDTO> car = reader.findCarById(5);
+        System.out.print("\nПоиск по id: 5: " + car.get());
+        //car.ifPresent(System.out::print);
 
+        System.out.println("\nПоиск по модели: BMW: ");
         String brand = "BMW";
         Map<String, Integer> carModels = reader.getCarModelGroupByModel(brand);
         carModels.forEach((model, count) ->
