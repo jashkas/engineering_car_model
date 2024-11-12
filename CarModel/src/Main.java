@@ -1,5 +1,6 @@
-import ru.esstu.carmodel.CarModelDTO;
-import ru.esstu.carmodel.CarModelReader;
+import ru.esstu.lab1.carmodel.CarModelDTO;
+import ru.esstu.lab1.service.CarModelReader;
+import ru.esstu.lab1.service.CarModelService;
 
 import java.util.List;
 import java.util.Map;
@@ -9,9 +10,7 @@ import java.util.Optional;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        CarModelReader reader = new CarModelReader();
-        String filepath = "J:\\Bachelor\\3_course\\fundamentals_of_software_engineering\\2 - 18.09.24\\027_DST_CAR_MODEL.csv";
-        reader.load(filepath);
+        CarModelService reader = new CarModelService();
 
         List<CarModelDTO> cars = reader.getAllCarModels();
         cars.forEach(System.out::println);
