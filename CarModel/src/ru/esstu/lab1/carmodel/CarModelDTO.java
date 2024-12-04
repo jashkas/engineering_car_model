@@ -47,16 +47,26 @@ public class CarModelDTO {
 
     @Override
     public boolean equals(Object o) {
+        // Проверка: если объекты идентичны (по ссылке), значит они равны
+        if (this == o) return true;
+
+        // Проверка: если переданный объект null или классы не совпадают, они не равны
         if (o == null || getClass() != o.getClass()) return false;
 
+        // Приведение типа для дальнейшего детального сравнения
         CarModelDTO that = (CarModelDTO) o;
 
         if (id == that.id && brand == null && model == null && countryOrigin == null && countryCode == null) { return true; }
+        // Сравнение первичного ключа id. Если он не одинаков, объекты не равны.
         if (id != that.id) return false;
+
+        // Сравнение каждого значимого поля на равенство
         if (brand != null ? !brand.equals(that.brand) : that.brand != null) return false;
         if (model != null ? !model.equals(that.model) : that.model != null) return false;
         if (countryOrigin != null ? !countryOrigin.equals(that.countryOrigin) : that.countryOrigin != null) return false;
-        if (countryCode!= null?!countryCode.equals(that.countryCode) : that.countryCode!= null) return false;
-        return false;
+        if (countryCode != null ? !countryCode.equals(that.countryCode) : that.countryCode != null) return false;
+
+        // Если все поля равны, возвращаем true
+        return true;
     }
 }

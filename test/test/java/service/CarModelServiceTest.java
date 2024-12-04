@@ -1,18 +1,15 @@
-package test.java;
+package test.java.service;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.esstu.lab1.carmodel.CarModelDTO;
-import ru.esstu.lab1.service.CarModelReader;
 import ru.esstu.lab1.service.CarModelService;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -20,7 +17,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class CarServiceTest {
+public class CarModelServiceTest {
     private CarModelService carModelService;
     private Path tempFile;
 
@@ -109,6 +106,19 @@ public class CarServiceTest {
 
         assertEquals(1, groupedModels.get("1 Series Convertible").intValue(), "Количество моделей 1 Series Convertible должно быть 1");
         assertEquals(1, groupedModels.get("X7").intValue(), "Количество моделей X7 должно быть 1");
+    }
+
+    @Test
+    public void testGetUniqueCarBrands() {
+        List<String> uniqueBrands = carModelService.getUniqueCarBrands();
+
+        // Проверка правильности количества уникальных брендов
+        assertEquals(3, uniqueBrands.size(), "Should have 3 unique brands");
+
+        // Проверка наличия указанных брендов
+        assertTrue(uniqueBrands.contains("BMW"), "Should contain BMW");
+        assertTrue(uniqueBrands.contains("Audi"), "Should contain Audi");
+        assertTrue(uniqueBrands.contains("Toyota"), "Should contain Toyota");
     }
 }
 

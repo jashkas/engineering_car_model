@@ -2,10 +2,7 @@ package ru.esstu.lab1.service;
 import ru.esstu.lab1.carmodel.CarModelDTO;
 import ru.esstu.lab1.util.FileManagerCarModelService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CarModelService implements FileManagerCarModelService{
@@ -55,5 +52,13 @@ public class CarModelService implements FileManagerCarModelService{
         return carModels.stream()
                 .filter(carModel -> carModel.getBrand().equalsIgnoreCase(brand)) // фильтр по бренду
                 .collect(Collectors.groupingBy(CarModelDTO::getModel, Collectors.summingInt(carModel -> 1))); // группировка по модели и количество
+    }
+
+    // Метод возвращает список уникальных марок автомобилей
+    public List<String> getUniqueCarBrands() {
+        Set<String> uniqueBrands = carModels.stream()
+                .map(CarModelDTO::getBrand)
+                .collect(Collectors.toSet());
+        return new ArrayList<>(uniqueBrands);
     }
 }
