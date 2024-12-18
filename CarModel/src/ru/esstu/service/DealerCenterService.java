@@ -1,5 +1,6 @@
-package ru.esstu.lab1.service;
+package ru.esstu.service;
 
+import ru.esstu.carmodel.*;
 import ru.esstu.lab1.carmodel.*;
 
 import java.util.ArrayList;

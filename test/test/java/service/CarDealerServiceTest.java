@@ -2,10 +2,10 @@ package test.java.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.esstu.lab1.carmodel.CarDTO;
-import ru.esstu.lab1.carmodel.CarModelDTO;
-import ru.esstu.lab1.carmodel.DealerCenterDTO;
-import ru.esstu.lab1.service.DealerCenterService;
+import ru.esstu.carmodel.CarDTO;
+import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.carmodel.DealerCenterDTO;
+import ru.esstu.service.DealerCenterService;
 
 import java.util.ArrayList;
 import java.util.List;

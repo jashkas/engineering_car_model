@@ -1,6 +1,5 @@
-import ru.esstu.lab1.carmodel.CarModelDTO;
-import ru.esstu.lab1.service.CarModelReader;
-import ru.esstu.lab1.service.CarModelService;
+import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.service.CarModelService;
 
 import java.util.List;
 import java.util.Map;

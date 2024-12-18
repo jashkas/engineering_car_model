@@ -1,4 +1,4 @@
-package ru.esstu.lab1.carmodel;
+package ru.esstu.carmodel;
 
 public class CarModelDTO {
     private int id;

@@ -1,6 +1,6 @@
-package ru.esstu.lab1.service;
-import ru.esstu.lab1.carmodel.CarModelDTO;
-import ru.esstu.lab1.util.FileManagerCarModelService;
+package ru.esstu.service;
+import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.util.FileManagerCarModelService;
 
 import java.util.*;
 import java.util.stream.Collectors;

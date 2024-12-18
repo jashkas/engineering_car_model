@@ -1,16 +1,11 @@
-package ru.esstu.lab1.service;
+package ru.esstu.service;
 
-import ru.esstu.lab1.util.FileManagerCarModelService;
-import ru.esstu.lab1.carmodel.CarModelDTO;
+import ru.esstu.carmodel.CarModelDTO;
 
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class CarModelReader {
 
