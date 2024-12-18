@@ -6,16 +6,22 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CarModelRepository {
-    private Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:h2:file:./data/dealerDB", "sa", "");
     }
 
     public void create(CarModelEntity carModel) throws SQLException {
         String sql = "INSERT INTO CarModel (brand, model) VALUES (?, ?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, carModel.getBrand());
             stmt.setString(2, carModel.getModel());
             stmt.executeUpdate();
+            // После создания нужно получить сгенерированный идентификатор
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    carModel.setId(generatedKeys.getLong(1));
+                }
+            }
         }
     }
 

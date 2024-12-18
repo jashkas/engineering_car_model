@@ -1,5 +1,5 @@
 package ru.esstu.service;
-import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.dto.CarModelDTO;
 import ru.esstu.util.FileManagerCarModelService;
 
 import java.util.*;

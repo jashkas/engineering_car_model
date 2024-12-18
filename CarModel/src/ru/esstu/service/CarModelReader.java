@@ -1,6 +1,6 @@
 package ru.esstu.service;
 
-import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.dto.CarModelDTO;
 
 import java.io.FileReader;
 import java.io.BufferedReader;

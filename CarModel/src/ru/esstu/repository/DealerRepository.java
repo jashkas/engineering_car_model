@@ -6,20 +6,27 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class DealerRepository {
-    private Connection getConnection() throws SQLException {
+
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:h2:file:./data/dealerDB", "sa", "");
     }
 
     public void create(DealerEntity dealer) throws SQLException {
         String sql = "INSERT INTO Dealer (name) VALUES (?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, dealer.getName());
             stmt.executeUpdate();
+            // После создания нужно получить сгенерированный идентификатор
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    dealer.setId(generatedKeys.getLong(1));
+                }
+            }
         }
     }
 
     public DealerEntity getById(Long id) throws SQLException {
-        String sql = "SELECT * FROM Dealer WHERE id = ?";
+        String sql = "SELECT * FROM Dealer WHERE id = (?)";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, id);
             try (ResultSet rs = stmt.executeQuery()) {

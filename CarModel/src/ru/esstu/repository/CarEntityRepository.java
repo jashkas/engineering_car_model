@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CarEntityRepository {
-    private Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection("jdbc:h2:file:./data/dealerDB", "sa", "");
     }
 
     public void create(CarEntity car) throws SQLException {
         String sql = "INSERT INTO Car (model_id, dealer_id, country_origin, country_code, status, configuration, color, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setLong(1, car.getCarModel().getId());
             stmt.setLong(2, car.getDealer().getId());
             stmt.setString(3, car.getCountryOrigin());
@@ -24,6 +24,12 @@ public class CarEntityRepository {
             stmt.setString(7, car.getColor());
             stmt.setDouble(8, car.getPrice());
             stmt.executeUpdate();
+            // После создания нужно получить сгенерированный идентификатор
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    car.setId(generatedKeys.getLong(1));
+                }
+            }
         }
     }
 

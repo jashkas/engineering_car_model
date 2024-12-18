@@ -1,4 +1,4 @@
-import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.dto.CarModelDTO;
 import ru.esstu.service.CarModelService;
 
 import java.util.List;

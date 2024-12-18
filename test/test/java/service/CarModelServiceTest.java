@@ -3,7 +3,7 @@ package test.java.service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.dto.CarModelDTO;
 import ru.esstu.service.CarModelService;
 
 import java.io.BufferedWriter;

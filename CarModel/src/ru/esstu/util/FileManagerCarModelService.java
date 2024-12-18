@@ -1,6 +1,6 @@
 package ru.esstu.util;
 
-import ru.esstu.carmodel.CarModelDTO;
+import ru.esstu.dto.CarModelDTO;
 
 import java.util.List;
 import java.util.Map;
